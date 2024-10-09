@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dq5fham8tttd3"]
+
+[ext_resource type="Script" path="res://scripts/round_stone.gd" id="1_whl1u"]
+[ext_resource type="Texture2D" uid="uid://d0w25c5uqdjhu" path="res://sprites/tilesets/round_stone.png" id="2_x0jin"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sg7lf"]
+radius = 15.3054
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bierc"]
+size = Vector2(66, 29.0678)
+
+[node name="RoundStone" type="RigidBody2D" groups=["Traps"]]
+collision_layer = 33
+collision_mask = 3
+mass = 10.0
+script = ExtResource("1_whl1u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("2_x0jin")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.7, 1.7)
+shape = SubResource("CircleShape2D_sg7lf")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(-161, 0)
+shape = SubResource("RectangleShape2D_bierc")
+debug_color = Color(0.896363, 0.278868, 0.396912, 0.42)
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

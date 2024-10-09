@@ -1,0 +1,132 @@
+[gd_scene load_steps=13 format=3 uid="uid://dg737s6ojik1i"]
+
+[ext_resource type="Texture2D" uid="uid://r25fcw1js3h2" path="res://sprites/background/hill/1.png" id="1_2dgvl"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_mt8f7"]
+[ext_resource type="FontFile" uid="uid://cnmu3s5rf1ivm" path="res://fonts/Kaph-Italic.ttf" id="1_yhwvq"]
+[ext_resource type="Texture2D" uid="uid://c8jk3c1vsysxl" path="res://sprites/ui/Default.png" id="2_640j6"]
+[ext_resource type="Texture2D" uid="uid://b2y7ieosh0l84" path="res://sprites/ui/Hover.png" id="3_l3mq2"]
+[ext_resource type="Texture2D" uid="uid://5lk5kg1ofylu" path="res://sprites/ui/NameBack.png" id="3_p7ujb"]
+[ext_resource type="Texture2D" uid="uid://hxe5s43je1nr" path="res://sprites/ui/Hover@2x-1.png" id="4_7ngsh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gkdxd"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qc5yb"]
+texture = ExtResource("3_l3mq2")
+region_rect = Rect2(0, 0, 196, 84)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aoohg"]
+texture = ExtResource("4_7ngsh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_anhx8"]
+texture = ExtResource("2_640j6")
+region_rect = Rect2(0, 0, 196, 84)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nxoql"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mt8f7")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2dgvl")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("3_p7ujb")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_yhwvq")
+theme_override_font_sizes/font_size = 66
+text = "Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer/CenterContainer2"]
+custom_minimum_size = Vector2(196, 84)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.580392, 0.294118, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.580392, 0.294118, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.580392, 0.294118, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.580392, 0.294118, 1)
+theme_override_colors/font_color = Color(0.909804, 0.580392, 0.294118, 1)
+theme_override_fonts/font = ExtResource("1_yhwvq")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gkdxd")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qc5yb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_aoohg")
+theme_override_styles/normal = SubResource("StyleBoxTexture_anhx8")
+text = "Play"
+
+[node name="CenterContainer4" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer/CenterContainer4"]
+custom_minimum_size = Vector2(196, 84)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_hover_pressed_color = Color(0.909804, 0.580392, 0.294118, 1)
+theme_override_colors/font_hover_color = Color(0.909804, 0.580392, 0.294118, 1)
+theme_override_colors/font_pressed_color = Color(0.909804, 0.580392, 0.294118, 1)
+theme_override_colors/font_focus_color = Color(0.909804, 0.580392, 0.294118, 1)
+theme_override_colors/font_color = Color(0.909804, 0.580392, 0.294118, 1)
+theme_override_fonts/font = ExtResource("1_yhwvq")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nxoql")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qc5yb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_aoohg")
+theme_override_styles/normal = SubResource("StyleBoxTexture_anhx8")
+text = "Setting's"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainer2/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CenterContainer4/SettingsButton" to="." method="_on_settings_button_pressed"]

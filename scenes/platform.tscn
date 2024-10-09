@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2co88y2levmp"]
+
+[ext_resource type="Texture2D" uid="uid://c6maool1v860h" path="res://sprites/tilesets/Tilesheet - WOODS.png" id="1_p1kus"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ecurv"]
+size = Vector2(126, 28)
+
+[node name="Platform" type="AnimatableBody2D"]
+collision_layer = 64
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_p1kus")
+region_enabled = true
+region_rect = Rect2(383.495, 95.9996, 128.625, 31.3642)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_ecurv")
+one_way_collision = true

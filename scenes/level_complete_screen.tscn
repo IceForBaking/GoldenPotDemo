@@ -1,0 +1,138 @@
+[gd_scene load_steps=12 format=3 uid="uid://cmm4bggwluib7"]
+
+[ext_resource type="Script" path="res://scripts/level_complete_screen.gd" id="1_5wq24"]
+[ext_resource type="Texture2D" uid="uid://r25fcw1js3h2" path="res://sprites/background/hill/1.png" id="1_y3hcc"]
+[ext_resource type="FontFile" uid="uid://cnmu3s5rf1ivm" path="res://fonts/Kaph-Italic.ttf" id="2_vo56i"]
+[ext_resource type="Texture2D" uid="uid://cuxvfepstmote" path="res://sprites/ui/MoneyCounter.png" id="3_y2bwq"]
+[ext_resource type="Texture2D" uid="uid://dk24xuhqjbj1j" path="res://sprites/ui/Money.png" id="4_llw8d"]
+[ext_resource type="Texture2D" uid="uid://xh1rqd03wb7p" path="res://sprites/ui/BigUnactive.png" id="5_6o7t6"]
+[ext_resource type="Texture2D" uid="uid://djgxcf7tnxemg" path="res://sprites/ui/BigActive.png" id="5_ici8b"]
+[ext_resource type="Texture2D" uid="uid://ckjcr20th32qm" path="res://sprites/ui/DefaultHome.png" id="6_lj5jt"]
+[ext_resource type="Texture2D" uid="uid://bxkh631s5wwk0" path="res://sprites/ui/HoverHome.png" id="7_78lq1"]
+[ext_resource type="Texture2D" uid="uid://borupweymglf1" path="res://sprites/ui/DefaultRight.png" id="8_bx0kg"]
+[ext_resource type="Texture2D" uid="uid://d0y6hiiaadaaf" path="res://sprites/ui/HoverRight.png" id="11_x0jte"]
+
+[node name="LevelCompleteScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5wq24")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_y3hcc")
+
+[node name="CompleteContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 138.0
+grow_horizontal = 2
+theme_override_constants/margin_top = -5
+
+[node name="Label" type="Label" parent="CompleteContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vo56i")
+theme_override_font_sizes/font_size = 46
+text = "Level Complete"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreContainer" type="MarginContainer" parent="CompleteContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 160
+
+[node name="MoneyScore" type="TextureRect" parent="CompleteContainer/ScoreContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_y2bwq")
+
+[node name="MarginContainer" type="MarginContainer" parent="CompleteContainer/ScoreContainer/MoneyScore"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 20
+
+[node name="MoneyIcon" type="TextureRect" parent="CompleteContainer/ScoreContainer/MoneyScore/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("4_llw8d")
+stretch_mode = 3
+
+[node name="MoneyLabel" type="Label" parent="CompleteContainer/ScoreContainer/MoneyScore/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("2_vo56i")
+theme_override_font_sizes/font_size = 21
+text = "000"
+
+[node name="StarContainer" type="HBoxContainer" parent="CompleteContainer/ScoreContainer/MoneyScore"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.0
+offset_top = 53.0
+offset_right = 158.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Star1" type="TextureButton" parent="CompleteContainer/ScoreContainer/MoneyScore/StarContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_ici8b")
+texture_disabled = ExtResource("5_6o7t6")
+
+[node name="Star2" type="TextureButton" parent="CompleteContainer/ScoreContainer/MoneyScore/StarContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_ici8b")
+texture_disabled = ExtResource("5_6o7t6")
+
+[node name="Star3" type="TextureButton" parent="CompleteContainer/ScoreContainer/MoneyScore/StarContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_ici8b")
+texture_disabled = ExtResource("5_6o7t6")
+
+[node name="ButtonContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 115
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HomeButton" type="TextureButton" parent="ButtonContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_lj5jt")
+texture_pressed = ExtResource("7_78lq1")
+texture_hover = ExtResource("7_78lq1")
+
+[node name="NextButton" type="TextureButton" parent="ButtonContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("8_bx0kg")
+texture_pressed = ExtResource("11_x0jte")
+texture_hover = ExtResource("11_x0jte")
+
+[connection signal="pressed" from="ButtonContainer/HBoxContainer/HomeButton" to="." method="_on_home_button_pressed"]
+[connection signal="pressed" from="ButtonContainer/HBoxContainer/NextButton" to="." method="_on_next_button_pressed"]

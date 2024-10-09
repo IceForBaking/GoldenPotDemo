@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ptlbxicagwu8"]
+
+[ext_resource type="Script" path="res://scripts/box_platform.gd" id="1_353pe"]
+[ext_resource type="Texture2D" uid="uid://c3c77ebwp4xg6" path="res://sprites/tilesets/box.png" id="1_eyfti"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_botu4"]
+size = Vector2(36, 35)
+
+[node name="BoxPlatform" type="RigidBody2D" groups=["Interactables"]]
+collision_layer = 256
+collision_mask = 263
+script = ExtResource("1_353pe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_eyfti")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_botu4")

@@ -1,0 +1,41 @@
+[gd_scene load_steps=10 format=3 uid="uid://c82axdkgcl2cy"]
+
+[ext_resource type="FontFile" uid="uid://hrgmync1kpde" path="res://fonts/Kaph-Regular.ttf" id="1_nu70c"]
+[ext_resource type="Texture2D" uid="uid://lorb62cfna23" path="res://sprites/ui/Locked.png" id="2_31tbw"]
+[ext_resource type="Texture2D" uid="uid://bcjq58ur3alsq" path="res://sprites/ui/Dummy.png" id="2_luibj"]
+[ext_resource type="Script" path="res://scripts/button.gd" id="4_odv2a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jgr0a"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pxt06"]
+texture = ExtResource("2_31tbw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_llsaw"]
+content_margin_right = 4.0
+content_margin_bottom = 20.0
+texture = ExtResource("2_luibj")
+modulate_color = Color(0.356863, 0.356863, 0.356863, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ehy4s"]
+content_margin_right = 4.0
+content_margin_bottom = 20.0
+texture = ExtResource("2_luibj")
+modulate_color = Color(0.188235, 0.188235, 0.188235, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p4e0t"]
+content_margin_right = 4.0
+content_margin_bottom = 20.0
+texture = ExtResource("2_luibj")
+
+[node name="1" type="Button"]
+custom_minimum_size = Vector2(80, 94)
+theme_override_fonts/font = ExtResource("1_nu70c")
+theme_override_font_sizes/font_size = 46
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jgr0a")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_pxt06")
+theme_override_styles/hover = SubResource("StyleBoxTexture_llsaw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ehy4s")
+theme_override_styles/normal = SubResource("StyleBoxTexture_p4e0t")
+text = "1
+"
+script = ExtResource("4_odv2a")

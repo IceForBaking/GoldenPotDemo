@@ -1,0 +1,78 @@
+[gd_scene load_steps=15 format=3 uid="uid://c4io3oss3ctqf"]
+
+[ext_resource type="Script" path="res://scripts/player_death_effect.gd" id="1_gj8w5"]
+[ext_resource type="Texture2D" uid="uid://ktrq1bexxyri" path="res://sprites/player/death_effect/HealEffect1.png" id="2_ts5pm"]
+[ext_resource type="Texture2D" uid="uid://wqiyj2yhe4m8" path="res://sprites/player/death_effect/HealEffect2.png" id="3_cl4ti"]
+[ext_resource type="Texture2D" uid="uid://ccx86c4ny4uhl" path="res://sprites/player/death_effect/HealEffect3.png" id="4_kci0n"]
+[ext_resource type="Texture2D" uid="uid://b75dxvdglfwj7" path="res://sprites/player/death_effect/HealEffect4.png" id="5_ykg4q"]
+[ext_resource type="Texture2D" uid="uid://dkajiu0bfyrd5" path="res://sprites/player/death_effect/HealEffect5.png" id="6_p3242"]
+[ext_resource type="Texture2D" uid="uid://ddufn4temgam4" path="res://sprites/player/death_effect/HealEffect6.png" id="7_2f0ib"]
+[ext_resource type="Texture2D" uid="uid://bcqvylolrw6x8" path="res://sprites/player/death_effect/HealEffect7.png" id="8_wvqiu"]
+[ext_resource type="Texture2D" uid="uid://dob53vgtbhrc1" path="res://sprites/player/death_effect/HealEffect8.png" id="9_g3yh5"]
+[ext_resource type="Texture2D" uid="uid://dx6lkt8guf4l8" path="res://sprites/player/death_effect/HealEffect9.png" id="10_ab51u"]
+[ext_resource type="Texture2D" uid="uid://da5aa5t8aleww" path="res://sprites/player/death_effect/HealEffect10.png" id="11_6ry8f"]
+[ext_resource type="Texture2D" uid="uid://mkmm2byyd3q1" path="res://sprites/player/death_effect/HealEffect11.png" id="12_u1i3c"]
+[ext_resource type="Texture2D" uid="uid://tj44u7wia13k" path="res://sprites/player/death_effect/HealEffect12.png" id="13_2qbof"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pqcld"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ts5pm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cl4ti")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kci0n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ykg4q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_p3242")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2f0ib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wvqiu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_g3yh5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ab51u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6ry8f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_u1i3c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2qbof")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}]
+
+[node name="PlayerDeathEffect" type="Node2D"]
+script = ExtResource("1_gj8w5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pqcld")
+animation = &"death"
+autoplay = "death"
+frame = 7
+frame_progress = 0.106692
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

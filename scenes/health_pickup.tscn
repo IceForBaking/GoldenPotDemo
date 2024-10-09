@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://c66w7xh6gaqtc"]
+
+[ext_resource type="Script" path="res://scripts/health_pickup.gd" id="1_5t20n"]
+[ext_resource type="Texture2D" uid="uid://bwyonvovtdi8u" path="res://sprites/ui/Heart3.png" id="2_fitdm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1ujl"]
+atlas = ExtResource("2_fitdm")
+region = Rect2(16, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nbk6"]
+atlas = ExtResource("2_fitdm")
+region = Rect2(32, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qffdx"]
+atlas = ExtResource("2_fitdm")
+region = Rect2(48, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5ukh"]
+atlas = ExtResource("2_fitdm")
+region = Rect2(64, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frceg"]
+atlas = ExtResource("2_fitdm")
+region = Rect2(80, 0, 16, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b2alk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1ujl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nbk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qffdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5ukh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frceg")
+}],
+"loop": true,
+"name": &"health_potion",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7f0xp"]
+radius = 11.0454
+
+[node name="HealthPickup" type="Node2D"]
+script = ExtResource("1_5t20n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_b2alk")
+animation = &"health_potion"
+autoplay = "health_potion"
+frame = 4
+frame_progress = 0.750308
+
+[node name="HelthPickupBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HelthPickupBox"]
+shape = SubResource("CircleShape2D_7f0xp")
+
+[connection signal="body_entered" from="HelthPickupBox" to="." method="_on_helth_pickup_box_body_entered"]

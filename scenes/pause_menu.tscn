@@ -1,0 +1,125 @@
+[gd_scene load_steps=23 format=3 uid="uid://dsmo5w2h2le7l"]
+
+[ext_resource type="FontFile" uid="uid://cnmu3s5rf1ivm" path="res://fonts/Kaph-Italic.ttf" id="1_hcbnb"]
+[ext_resource type="Texture2D" uid="uid://cnlu221e6axf5" path="res://sprites/ui/DefaultPlay.png" id="2_7x5kx"]
+[ext_resource type="Texture2D" uid="uid://ckojo6q3upxkx" path="res://sprites/ui/DefaultRepeat.png" id="2_vtqu0"]
+[ext_resource type="Texture2D" uid="uid://gi8ouikwkry7" path="res://sprites/ui/HoverRepeat.png" id="3_c1dic"]
+[ext_resource type="Texture2D" uid="uid://bc2jro4k7aoqo" path="res://sprites/ui/HoverPlay.png" id="3_go0el"]
+[ext_resource type="Texture2D" uid="uid://sm104hsl21kv" path="res://sprites/ui/Hover@2x-1Repeat.png" id="4_q3xu4"]
+[ext_resource type="Texture2D" uid="uid://cfjcyr6xc7hm8" path="res://sprites/ui/Hover@2x-1Play.png" id="4_sjwig"]
+[ext_resource type="Texture2D" uid="uid://ckjcr20th32qm" path="res://sprites/ui/DefaultHome.png" id="8_vfeji"]
+[ext_resource type="Texture2D" uid="uid://bxkh631s5wwk0" path="res://sprites/ui/HoverHome.png" id="9_86jva"]
+[ext_resource type="Texture2D" uid="uid://bi74l3qdel0gj" path="res://sprites/ui/Hover@2x-1Home.png" id="10_x1dxb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6p11h"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2cwbt"]
+texture = ExtResource("3_c1dic")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_02jvw"]
+texture = ExtResource("4_q3xu4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5lq50"]
+texture = ExtResource("2_vtqu0")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_poxww"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yvsqn"]
+texture = ExtResource("3_go0el")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wd4jm"]
+texture = ExtResource("4_sjwig")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_txocc"]
+texture = ExtResource("2_7x5kx")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5gf5y"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hd4p4"]
+texture = ExtResource("9_86jva")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gf7a7"]
+texture = ExtResource("10_x1dxb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i5mbr"]
+texture = ExtResource("8_vfeji")
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.247059, 0.247059, 0.247059, 0.768627)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 15
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_hcbnb")
+theme_override_font_sizes/font_size = 46
+text = "Pause"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 15
+
+[node name="RestartButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(84, 84)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6p11h")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2cwbt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_02jvw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_5lq50")
+
+[node name="ResumeButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(84, 84)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_poxww")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yvsqn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wd4jm")
+theme_override_styles/normal = SubResource("StyleBoxTexture_txocc")
+
+[node name="HomeButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(84, 84)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5gf5y")
+theme_override_styles/hover = SubResource("StyleBoxTexture_hd4p4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gf7a7")
+theme_override_styles/normal = SubResource("StyleBoxTexture_i5mbr")

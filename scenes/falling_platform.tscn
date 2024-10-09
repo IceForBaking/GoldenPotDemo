@@ -1,0 +1,253 @@
+[gd_scene load_steps=18 format=3 uid="uid://ex6q35c0bywg"]
+
+[ext_resource type="Script" path="res://scripts/falling_platform.gd" id="1_lyhog"]
+[ext_resource type="Texture2D" uid="uid://duuk8lj726njx" path="res://sprites/tilesets/FallingPlatform002.png" id="2_tw07k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xju1w"]
+size = Vector2(92, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nycqd"]
+size = Vector2(91, 8)
+
+[sub_resource type="Animation" id="Animation_f6c2k"]
+resource_name = "Falling"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Platform:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-20, 0), Vector2(0, 0), Vector2(-20, 0), Vector2(0, 0), Vector2(-20, 0), Vector2(0, 0), Vector2(0, 360)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlatformCollision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Platform:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.3, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ero50"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Platform:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlatformCollision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Platform:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_h4nub"]
+resource_name = "Regenerate"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlatformCollision:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Platform:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Platform:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, -20), Vector2(0, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"back_to_static"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_685vn"]
+resource_name = "Static"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlatformCollision:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Platform:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Platform:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gu8of"]
+_data = {
+"Falling": SubResource("Animation_f6c2k"),
+"RESET": SubResource("Animation_ero50"),
+"Regenerate": SubResource("Animation_h4nub"),
+"Static": SubResource("Animation_685vn")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ponoj"]
+animation = &"Falling"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l0avc"]
+animation = &"Regenerate"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8vjrq"]
+animation = &"Static"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0ox5u"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kwjtm"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b8pry"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kbtcw"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_pun7d"]
+states/End/position = Vector2(946, 126)
+states/Falling/node = SubResource("AnimationNodeAnimation_ponoj")
+states/Falling/position = Vector2(326, 53)
+states/Regenerate/node = SubResource("AnimationNodeAnimation_l0avc")
+states/Regenerate/position = Vector2(464, 148)
+states/Start/position = Vector2(97, 141)
+states/Static/node = SubResource("AnimationNodeAnimation_8vjrq")
+states/Static/position = Vector2(205, 141)
+transitions = ["Static", "Falling", SubResource("AnimationNodeStateMachineTransition_0ox5u"), "Falling", "Regenerate", SubResource("AnimationNodeStateMachineTransition_kwjtm"), "Regenerate", "Static", SubResource("AnimationNodeStateMachineTransition_b8pry"), "Start", "Static", SubResource("AnimationNodeStateMachineTransition_kbtcw")]
+
+[node name="FallingPlatform" type="StaticBody2D"]
+collision_mask = 2
+script = ExtResource("1_lyhog")
+
+[node name="Platform" type="Sprite2D" parent="."]
+texture = ExtResource("2_tw07k")
+
+[node name="PlatformCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_xju1w")
+one_way_collision = true
+
+[node name="PlayerDetected" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetected"]
+position = Vector2(-0.5, -13)
+shape = SubResource("RectangleShape2D_nycqd")
+debug_color = Color(0.941176, 0.219608, 0.258824, 0.419608)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gu8of")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_pun7d")
+anim_player = NodePath("../AnimationPlayer")
+
+[connection signal="body_entered" from="PlayerDetected" to="." method="_on_player_detected_body_entered"]

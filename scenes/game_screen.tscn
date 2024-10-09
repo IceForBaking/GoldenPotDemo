@@ -1,0 +1,118 @@
+[gd_scene load_steps=15 format=3 uid="uid://dx2ycnbkvl1c1"]
+
+[ext_resource type="PackedScene" uid="uid://cxnw7admbd606" path="res://scenes/health_bar.tscn" id="1_2qu31"]
+[ext_resource type="Script" path="res://scripts/game_screen.gd" id="1_pqilp"]
+[ext_resource type="Texture2D" uid="uid://cjw6sos4i1m4b" path="res://sprites/ui/Heart1.png" id="2_llfwp"]
+[ext_resource type="Texture2D" uid="uid://cidkl4cgbvwde" path="res://sprites/ui/Heart2.png" id="3_1vlwo"]
+[ext_resource type="Texture2D" uid="uid://6frqw14vsym3" path="res://sprites/collectibles/Coin2.png" id="5_sgp60"]
+[ext_resource type="FontFile" uid="uid://hrgmync1kpde" path="res://fonts/Kaph-Regular.ttf" id="6_0xnar"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3y2x"]
+atlas = ExtResource("5_sgp60")
+region = Rect2(0, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05fa5"]
+atlas = ExtResource("5_sgp60")
+region = Rect2(16, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tqg3"]
+atlas = ExtResource("5_sgp60")
+region = Rect2(32, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28ra1"]
+atlas = ExtResource("5_sgp60")
+region = Rect2(48, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggni5"]
+atlas = ExtResource("5_sgp60")
+region = Rect2(64, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hota8"]
+atlas = ExtResource("5_sgp60")
+region = Rect2(80, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddxur"]
+atlas = ExtResource("5_sgp60")
+region = Rect2(96, 0, 16, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wh4iw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3y2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05fa5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tqg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28ra1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggni5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hota8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddxur")
+}],
+"loop": true,
+"name": &"blink",
+"speed": 10.0
+}]
+
+[node name="GameScreen" type="CanvasLayer"]
+script = ExtResource("1_pqilp")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32.335)
+layout_mode = 2
+
+[node name="HealthBar" parent="MarginContainer/VBoxContainer/Control" instance=ExtResource("1_2qu31")]
+scale = Vector2(2.5, 2.5)
+first_heart = ExtResource("2_llfwp")
+second_heart = ExtResource("3_1vlwo")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(31.225, -3.21)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/VBoxContainer/HBoxContainer/Control"]
+position = Vector2(0, -3)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_wh4iw")
+animation = &"blink"
+autoplay = "blink"
+frame_progress = 0.250784
+centered = false
+
+[node name="CollectibleLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("6_0xnar")
+theme_override_font_sizes/font_size = 24
+text = "0
+"

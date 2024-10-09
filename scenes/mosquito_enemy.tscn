@@ -1,0 +1,194 @@
+[gd_scene load_steps=25 format=3 uid="uid://pe17f814nk2g"]
+
+[ext_resource type="Script" path="res://scripts/mosquito_enemy.gd" id="1_5wc2g"]
+[ext_resource type="Texture2D" uid="uid://cfnrve6q2ig01" path="res://sprites/enemies/mosquito_enemy/Sting_Attack_(32 x 32).png" id="1_25gmw"]
+[ext_resource type="Texture2D" uid="uid://c8acokd1rtgkh" path="res://sprites/enemies/mosquito_enemy/Flying_(32 x 32).png" id="2_4lc1a"]
+[ext_resource type="Texture2D" uid="uid://cgaapon2dvejj" path="res://sprites/enemies/mosquito_enemy/mosq002.png" id="3_f8ou3"]
+[ext_resource type="Texture2D" uid="uid://5ohe7vihw6gv" path="res://sprites/enemies/mosquito_enemy/01.png" id="3_vr33h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gsiy"]
+atlas = ExtResource("1_25gmw")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s20ed"]
+atlas = ExtResource("3_vr33h")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8lwa"]
+atlas = ExtResource("3_vr33h")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rknoi"]
+atlas = ExtResource("3_vr33h")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jt0fu"]
+atlas = ExtResource("3_vr33h")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ys0e"]
+atlas = ExtResource("3_vr33h")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nndw3"]
+atlas = ExtResource("3_vr33h")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtekh"]
+atlas = ExtResource("3_vr33h")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwxcq"]
+atlas = ExtResource("3_vr33h")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hoeun"]
+atlas = ExtResource("2_4lc1a")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgu3y"]
+atlas = ExtResource("2_4lc1a")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3sdlv"]
+atlas = ExtResource("2_4lc1a")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhct8"]
+atlas = ExtResource("2_4lc1a")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2lr4x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1gsiy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f8ou3")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s20ed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8lwa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rknoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jt0fu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ys0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nndw3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtekh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwxcq")
+}],
+"loop": false,
+"name": &"death",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hoeun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgu3y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3sdlv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhct8")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pb5tj"]
+radius = 13.3427
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ra7wv"]
+radius = 136.004
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4x4ch"]
+radius = 26.0
+height = 100.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_poykc"]
+radius = 12.9944
+height = 32.829
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yaea1"]
+size = Vector2(20, 6.16667)
+
+[node name="Mosquito_enemy" type="CharacterBody2D" groups=["Enemy"]]
+scale = Vector2(1.5, 1.5)
+collision_layer = 4
+collision_mask = 258
+script = ExtResource("1_5wc2g")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2lr4x")
+animation = &"attack"
+frame_progress = 0.240183
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.265, 2.425)
+scale = Vector2(0.99, 0.99)
+shape = SubResource("CircleShape2D_pb5tj")
+
+[node name="DetectionZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionZone"]
+shape = SubResource("CircleShape2D_ra7wv")
+debug_color = Color(0.968627, 0.109804, 0.360784, 0.419608)
+
+[node name="AttackZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone"]
+position = Vector2(0, 26)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_4x4ch")
+debug_color = Color(0.643137, 0.521569, 0, 0.419608)
+
+[node name="DeathZone" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+position = Vector2(-2, 1)
+rotation = 0.424115
+shape = SubResource("CapsuleShape2D_poykc")
+debug_color = Color(0.0156863, 0.65098, 0, 0.419608)
+
+[node name="HitZone" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitZone"]
+position = Vector2(0, -12.9167)
+shape = SubResource("RectangleShape2D_yaea1")
+
+[connection signal="body_entered" from="DetectionZone" to="." method="_on_detection_zone_body_entered"]
+[connection signal="body_exited" from="DetectionZone" to="." method="_on_detection_zone_body_exited"]
+[connection signal="body_entered" from="AttackZone" to="." method="_on_attack_zone_body_entered"]
+[connection signal="body_entered" from="DeathZone" to="." method="_on_death_zone_body_entered"]
+[connection signal="body_entered" from="HitZone" to="." method="_on_hit_zone_body_entered"]

@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://hnqsq4xxx2cb"]
+
+[ext_resource type="Script" path="res://scripts/portal_transition.gd" id="1_bk3bg"]
+[ext_resource type="Texture2D" uid="uid://buia0rlcwoby" path="res://sprites/tilesets/Dimensional_Portal.png" id="2_15c43"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ji7o"]
+atlas = ExtResource("2_15c43")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nybub"]
+atlas = ExtResource("2_15c43")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhy4c"]
+atlas = ExtResource("2_15c43")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkbvk"]
+atlas = ExtResource("2_15c43")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o28bt"]
+atlas = ExtResource("2_15c43")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncgwd"]
+atlas = ExtResource("2_15c43")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ovwg5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ji7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nybub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhy4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkbvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o28bt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncgwd")
+}],
+"loop": true,
+"name": &"move",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_amopa"]
+radius = 6.0
+
+[node name="PortalTransition" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_bk3bg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ovwg5")
+animation = &"move"
+autoplay = "move"
+frame = 2
+frame_progress = 0.385299
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("CapsuleShape2D_amopa")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

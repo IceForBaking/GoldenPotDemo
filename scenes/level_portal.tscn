@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=3 uid="uid://dsseofmjqgoli"]
+
+[ext_resource type="Texture2D" uid="uid://cveox88vfn5ns" path="res://sprites/tilesets/Purple Portal Sprite Sheet.png" id="1_4fmyw"]
+[ext_resource type="Script" path="res://scripts/level_portal.gd" id="1_4ti31"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3wjo"]
+atlas = ExtResource("1_4fmyw")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_werbg"]
+atlas = ExtResource("1_4fmyw")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ori1"]
+atlas = ExtResource("1_4fmyw")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhdry"]
+atlas = ExtResource("1_4fmyw")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4sjw"]
+atlas = ExtResource("1_4fmyw")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_viptk"]
+atlas = ExtResource("1_4fmyw")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swm1y"]
+atlas = ExtResource("1_4fmyw")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jb5oh"]
+atlas = ExtResource("1_4fmyw")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qgd4i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3wjo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_werbg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ori1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhdry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4sjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_viptk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swm1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jb5oh")
+}],
+"loop": true,
+"name": &"native",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cxw45"]
+radius = 5.33313
+height = 32.0
+
+[node name="Level_Portal" type="Area2D"]
+rotation = 3.14159
+collision_mask = 2
+script = ExtResource("1_4ti31")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qgd4i")
+animation = &"native"
+autoplay = "native"
+frame_progress = 0.811442
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.57628e-07, 4)
+shape = SubResource("CapsuleShape2D_cxw45")
+
+[node name="Distnation_point" type="Marker2D" parent="."]
+position = Vector2(14, 4)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
