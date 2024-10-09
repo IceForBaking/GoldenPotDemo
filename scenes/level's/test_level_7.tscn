@@ -1133,7 +1133,7 @@ position = Vector2(2473, 417)
 scale = Vector2(0.1, 0.1)
 
 [node name="OrcEnemy" parent="." instance=ExtResource("16_uxtia")]
-position = Vector2(1213, -28)
+position = Vector2(1025, -28)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 31.0
